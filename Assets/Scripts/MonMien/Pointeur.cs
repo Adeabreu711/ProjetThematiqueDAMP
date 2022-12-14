@@ -23,7 +23,7 @@ public class Pointeur : MonoBehaviour
     {
         float vInput = Input.GetAxis("Vertical") * speedVertical;        
 
-        transform.position = transform.position + transform.up * speedForward;
+        transform.position = transform.position + transform.up * speedForward * Time.deltaTime;
         //transform.position = transform.position + transform.up * vInput;
 
     }
