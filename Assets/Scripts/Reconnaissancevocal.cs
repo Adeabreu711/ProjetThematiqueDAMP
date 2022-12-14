@@ -10,10 +10,13 @@ public class Reconnaissancevocal : MonoBehaviour
 {
     [SerializeField] TMP_Text AffichageTextHaut;
     [SerializeField] TMP_Text AffichageTextBas;
+    [SerializeField] TMP_Text AffichageCouleur;
+
     private KeywordRecognizer keyWordRecognizer;
 
     public string wordUp = "";
     public string wordDown = "";
+    public string wordCouleur = "";
 
     int champLexical = 0;
 
@@ -50,6 +53,7 @@ public class Reconnaissancevocal : MonoBehaviour
 
         wordUp = RandomWord(champLexical);
         wordDown = RandomWord(champLexical);
+        wordCouleur = RandomWord(champLexical);
 
         while (wordUpSave == wordUp)
         {
@@ -68,6 +72,8 @@ public class Reconnaissancevocal : MonoBehaviour
 
         AffichageTextHaut.text = wordUp;
         AffichageTextBas.text = wordDown;
+        AffichageCouleur.text = wordCouleur;
+
     }
 
     void ChampLexical()
@@ -86,6 +92,11 @@ public class Reconnaissancevocal : MonoBehaviour
         if (speech.text == wordDown)
         {
             Down();
+            RandomizeWords();
+        }
+
+        if (speech.text == wordCouleur)
+        {
             RandomizeWords();
         }
 
