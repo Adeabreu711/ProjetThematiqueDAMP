@@ -7,31 +7,24 @@ public class Pointeur : MonoBehaviour
 {
     public Transform playerPosition;
 
-    public Vector3 offset;
+    public Vector3 startPosition;
 
-    public float ratio;
+    public float speedForward;
+    public float speedVertical;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.position = startPosition;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float vInput = Input.GetAxis("Vertical") * ratio;
+        float vInput = Input.GetAxis("Vertical") * speedVertical;        
 
-        Vector2 curseurDeplacement = new Vector2(playerPosition.position.x +5, playerPosition.position.y);
-        
+        transform.position = transform.position + transform.up * speedForward;
+        //transform.position = transform.position + transform.up * vInput;
 
-
-
-        /* Vector3 defaultPosition = playerPosition.position + offset;
-        Vector3 newPosition = new Vector3(defaultPosition.x, defaultPosition.y + vInput, defaultPosition.z);
-
-        //Vector3 finalPosition = defaultPosition + ; */
-
-        transform.position = curseurDeplacement;
     }
 }
